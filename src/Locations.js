@@ -17,11 +17,10 @@ class Locations extends Component {
   }
 
   submitCity = (city) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&APPID=${APIkey}`).then(res =>
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=metric&APPID=${APIkey}`).then(res =>
       res.json()
     ).then((data) => {
       this.setState({ data });
-      console.log(this.state.data);
       this.props.dataCallback({ data: this.state.data })
     })
   }
@@ -39,8 +38,6 @@ class Locations extends Component {
             />
           <input type="submit" value="Submit" />
         </form>
-        <h5> child: {this.state.city} </h5>
-
       </div>
     )
   }

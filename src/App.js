@@ -14,15 +14,16 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.data.data)
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Weather App</h1>
         </header>
         <div className="App-container">
+          <br/>
           <Locations dataCallback={this.getData}/>
-          <CurrentWeather/>
+          <br/>
+          <CurrentWeather weatherData={this.state.data.data}/>
         </div>
       </div>
     );

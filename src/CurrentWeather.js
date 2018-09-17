@@ -2,22 +2,24 @@ import React, { Component } from 'react'
 
 
 class CurrentWeather extends Component {
-  state = {
-    weather: [],
-    temp: [],
-    humidity: [],
-  }
 
 
 
   render(){
+    const weatherData = this.props.weatherData;
+
+    if (!weatherData) {
+      return <div>Please enter your city for the current weather!</div>
+    }
     return(
       <div>
-        <span> Weather: {this.state.weather}</span>
+        <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt={`${weatherData.weather[0].description} icon`}/>
         <br/>
-        <span> Temperature: {this.state.temp}</span>
+        <span> Weather Description: {weatherData.weather[0].description} </span>
         <br/>
-        <span> Humidity: {this.state.humidity}</span>
+        <span> Temperature: {weatherData.main.temp} Celsius</span>
+        <br/>
+        <span> Humidity: {weatherData.main.humidity}</span>
       </div>
     )
   }
