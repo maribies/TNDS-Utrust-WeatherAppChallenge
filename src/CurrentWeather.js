@@ -1,33 +1,23 @@
 import React, { Component } from 'react'
 
-const APIkey = "452ca14a18724a1a10f983ea88bfa83a"
-let location = "london"
 
 class CurrentWeather extends Component {
   state = {
     weather: [],
-    temperature: [],
+    temp: [],
     humidity: [],
   }
 
-  componentDidMount() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${APIkey}`).then(res =>
-      res.json()
-    ).then((data) => {
-      this.setState({
-        weather: data.weather[0].description,
-        temperature: data.main.temp,
-        humidity: data.main.humidity,
-      });
-    })
-  }
+
 
   render(){
     return(
       <div>
-        <span> {this.state.weather}</span>
-        <span> {this.state.temperature}</span>
-        <span> {this.state.humidity}</span>
+        <span> Weather: {this.state.weather}</span>
+        <br/>
+        <span> Temperature: {this.state.temp}</span>
+        <br/>
+        <span> Humidity: {this.state.humidity}</span>
       </div>
     )
   }
